@@ -1,0 +1,12 @@
+const cardStyles = document.createElement('link');
+cardStyles.rel = 'stylesheet';
+cardStyles.href = 'enhancements.css';
+document.head.appendChild(cardStyles);
+const menu = document.querySelector('.menu-button');
+const nav = document.querySelector('nav');
+menu?.addEventListener('click', () => { const open = nav.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); menu.textContent = open ? 'Close' : 'Menu'; });
+document.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => { nav.classList.remove('open'); menu.setAttribute('aria-expanded', 'false'); menu.textContent = 'Menu'; }));
+document.querySelector('.portrait-frame img')?.addEventListener('error', (event) => event.currentTarget.remove());
+const clients = ['Alliant','SeaSpan','Vertex Pharmaceuticals','Fitbit','SVB','BlueTriton Brands','Elevance Health','US Bank','Okta','BD','Anthem','Danske Bank','Community Care','Deloitte','Denver International Airport','McDonald’s Corporation','MuleSoft','Ultragenyx','NowCom','Spirent','Marvell Semiconductors','Neiman Marcus','Hawaii Medical Service Association','AEG','International Integrated Solutions','Public Storage','San Manuel','SCAG','StockX','Tableau','DC Octo'];
+document.getElementById('client-list').innerHTML = clients.map((client) => `<span>${client}</span>`).join('');
+document.getElementById('year').textContent = new Date().getFullYear();
